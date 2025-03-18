@@ -1,27 +1,30 @@
-PROG	=	Push_Swap
+PROG		=	Push_Swap
 
-CC=cc
+CC			=	cc
+C_FLAGS	=	-Wall -Wextra -Werror -g
 
-C_FLAGS= -Wall -Wextra -Werror -g
+SRC			=	src/error_management.c src/main.c src/input_parse.c src/stack_utils.c
+OBJ			=	$(SRC:.c=.o)
 
-SRC		=	src/algorithm.c src/error_handle.c src/operations.c \
-				src/push_swap.c src/utils.c
+HEADER	=	-Iinc
 
+%.o : %.c
+	@$(CC) ${C_FLAGS} ${HEADER} -c $< -o $@
 
+all: ${PROG}
 
-all:
-	@echo "\033[33mCompiling Lib.............."
-	@make -C ./lib
-	@echo "\033[33m..........................."
-	@printf "\033c"
+${PROG}: ${OBJ}
 	@echo "\033[35mLIB COMPILED SUCCESSFULLY!!!!"
+	@make re -C lib
+	@$(CC) -g ${OBJ} -Llib -lft -o ${PROG}
 	@echo "\033[33mCompiling Push_Swap cause'\nSwap_Push is not that natural"
-	@$(CC) $(C_FLAGS) $(SRC) lib/inc_lib.a -o $(PROG)
-
-re: fclean all
 
 clean:
 	@make fclean -C lib
+	@rm -rf ${OBJ}
 
 fclean: clean
 	@rm -rf $(PROG)
+	@echo "\n033[31mDeleting EVERITHING!!!! ⌐(ಠ۾ಠ)¬\n"
+
+re: fclean all
