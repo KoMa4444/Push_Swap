@@ -41,3 +41,13 @@ void	free_stack(stack_t **stack)
 	}
 	free(tmp);
 }
+
+stack_t	*get_last(stack_t *stack)
+{
+	stack_t	*tmp;
+
+	tmp = stack;
+	while (tmp->next->val != 0)
+		tmp = tmp->next;
+	return (tmp);
+}
