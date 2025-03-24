@@ -1,35 +1,54 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rev_rotate.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/24 17:01:24 by mkollar           #+#    #+#             */
+/*   Updated: 2025/03/24 19:04:50 by mkollar          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/push_swap.h"
 
-void	rev_rotate(stack_t **stack)
+void	rev_rotate(t_stack **stack)
 {
-	stack_t	*last;
-	stack_t	*new;
+	t_stack	*last;
+	t_stack	*pre_last;
+	t_stack	*new;
 
 	last = *stack;
-	while (last->next->val != 0)
+	while (last->next != NULL)
+	{
+		pre_last = last;
 		last = last->next;
-	new = (stack_t *)ft_calloc(1, sizeof(stack_t));
+	}
+	pre_last->next = NULL;
+	new = (t_stack *)ft_calloc(1, sizeof(t_stack));
 	new->val = last->val;
-	free(last->next);
-	last->next = NULL;
-	last->val = 0;
-	new->next = (*stack);
-	(*stack) = new;
+	new->prev = NULL;
+	free(last);
+	last = NULL;
+	new->next = *stack;
+	new->prev = NULL;
+	(*stack)->prev = new;
+	*stack = new;
 }
 
-void	rra(stack_t **stack_a)
+void	rra(t_stack **stack_a)
 {
 	ft_putstr_fd("rra\n", 1);
 	rev_rotate(stack_a);
 }
 
-void	rrb(stack_t **stack_b)
+void	rrb(t_stack **stack_b)
 {
 	ft_putstr_fd("rrb\n", 1);
 	rev_rotate(stack_b);
 }
 
-void	rrr(stack_t **stack_a, stack_t **stack_b)
+void	rrr(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_putstr_fd("rrr\n", 1);
 	rev_rotate(stack_a);

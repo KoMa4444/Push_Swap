@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error_management.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/24 17:00:48 by mkollar           #+#    #+#             */
+/*   Updated: 2025/03/24 19:27:32 by mkollar          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/push_swap.h"
 
 void	check_arg(int argc, char **argv)
@@ -15,7 +27,7 @@ void	check_arg(int argc, char **argv)
 			{
 				ft_putstr_fd("\033[31mError:\nPlease input only numeric characters\n", 2);
 				ft_putstr_fd("\033[31mfollowed by spaces, dont do silly things >:c", 2);
-				exit(3);
+				exit(INPUT_ERROR);
 			}
 			j++;
 		}

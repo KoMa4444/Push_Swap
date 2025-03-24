@@ -1,40 +1,75 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/24 17:01:10 by mkollar           #+#    #+#             */
+/*   Updated: 2025/03/24 19:04:50 by mkollar          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/push_swap.h"
 
-void	print_stack(stack_t *stack)
+int	stk_len(t_stack *st)
 {
-	stack_t *tmp;
+	int	i;
+
+	if (!st)
+		return (-1);
+	i = 0;
+	while (st->next != NULL)
+		i++;
+	return (i);
+}
+
+void	print_stack(t_stack *stack)
+{
+	t_stack *tmp;
 
 	if (!stack)
 		return ;
 	tmp = stack;
-	while (tmp->val != 0)
+	while (tmp->next != NULL)
 	{
 		ft_printf("%i\n", tmp->val);
 		tmp = tmp->next;
 	}
+	ft_printf("%i\n", tmp->val);
 }
 
-void	add_to_stack(stack_t **stack, int val)
+void	add_to_stack(t_stack **stack, int val)
 {
-	stack_t	*tmp;
+	t_stack	*tmp;
 
-	if (!stack)
+	if (!(*stack))
+	{
+		*stack = (t_stack *)ft_calloc(1, sizeof(t_stack));
+		if (!(*stack))
+			exit_malloc_error();
+		(*stack)->val = val;
+		(*stack)->next = NULL;
+		(*stack)->prev = NULL;
 		return ;
+	}
 	tmp = *stack;
-	while (tmp->val != 0)
+	while (tmp->next != NULL)
 		tmp = tmp->next;
-	tmp->val = val;
-	tmp->next = (stack_t *)ft_calloc(1, sizeof(stack_t));
-	tmp->next->val = 0;
+	tmp->next = (t_stack *)ft_calloc(1, sizeof(t_stack));
+	if (!(tmp->next))
+		exit_malloc_error();
+	tmp->next->val = val;
 	tmp->next->prev = tmp;
+	tmp->next->next = NULL;
 }
 
-void	free_stack(stack_t **stack)
+void	free_stack(t_stack **stack)
 {
-	stack_t *tmp;
+	t_stack *tmp;
 	tmp = *stack;
 
-	while (tmp->val != 0)
+	while (tmp->next != NULL)
 	{
 		tmp = tmp->next;
 		free(tmp->prev);
@@ -42,9 +77,9 @@ void	free_stack(stack_t **stack)
 	free(tmp);
 }
 
-stack_t	*get_last(stack_t *stack)
+t_stack	*get_last(t_stack *stack)
 {
-	stack_t	*tmp;
+	t_stack	*tmp;
 
 	tmp = stack;
 	while (tmp->next->val != 0)

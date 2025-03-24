@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input_parse.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/24 17:00:56 by mkollar           #+#    #+#             */
+/*   Updated: 2025/03/24 19:04:50 by mkollar          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/push_swap.h"
 
 int	get_number(char *argv, int *counter)
@@ -18,15 +30,13 @@ int	get_number(char *argv, int *counter)
 	return (val);
 }
 
-stack_t	*get_stack(int argc, char **argv)
+t_stack	*get_stack(int argc, char **argv)
 {
 	int		i;
 	int		j;
-	stack_t	*stack_a;
+	t_stack	*stack_a;
 
-	stack_a = (stack_t *)ft_calloc(1, sizeof(stack_t));
-	if (!stack_a)
-		exit_malloc_error();
+	stack_a = NULL;
 	i = 1;
 	while	(i < argc)
 	{

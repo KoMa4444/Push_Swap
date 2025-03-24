@@ -3,48 +3,62 @@
 
 #	include "libft.h"
 
-typedef struct stack_s
+typedef struct s_stack
 {
 	int							val;
 	int							target;
 	int							max;
 	int							min;
-	struct stack_s	*prev;
-	struct stack_s	*next;
-}	stack_t;
+	struct s_stack	*prev;
+	struct s_stack	*next;
+}	t_stack;
+
+typedef struct s_moves
+{
+	int				id;
+	int				moves;
+}	t_moves;
+
+typedef enum e_out
+{
+	OK = 0,
+	INPUT_ERROR = 1, 
+	MALLOC_ERROR = 2,
+	BAD_INDEX = 3
+} t_out;
 
 // input parse
 int		get_number(char *argv, int *counter);
-stack_t	*get_stack(int argc, char **argv);
+t_stack	*get_stack(int argc, char **argv);
 
 // stack utils
-void	print_stack(stack_t *stack);
-void	add_to_stack(stack_t **stack, int val);
-void	free_stack(stack_t **stack);
-stack_t	*get_last(stack_t *stack);
-
+void	print_stack(t_stack *stack);
+void	add_to_stack(t_stack **stack, int val);
+void	free_stack(t_stack **stack);
+t_stack	*get_last(t_stack *stack);
+int		stk_len(t_stack *st);
 // main.c
 
 // operations
 // -> Push
-void	push(stack_t **src, stack_t **dst);
-void	pa(stack_t **stack_b, stack_t **stack_a);
-void	pb(stack_t **stack_a, stack_t **stack_b);
+void	push(t_stack **src, t_stack **dst);
+void	pa(t_stack **stack_b, t_stack **stack_a);
+void	pb(t_stack **stack_a, t_stack **stack_b);
 // -> Rev_Rotate
-void	rev_rotate(stack_t **stack);
-void	rra(stack_t **stack_a);
-void	rrb(stack_t **stack_b);
-void	rrr(stack_t **stack_a, stack_t **stack_b);
+void	rev_rotate(t_stack **stack);
+void	rra(t_stack **stack_a);
+void	rrb(t_stack **stack_b);
+void	rrr(t_stack **stack_a, t_stack **stack_b);
 // -> Rotate
-void	rotate(stack_t **stack);
-void	ra(stack_t **stack_a);
-void	rb(stack_t **stack_b);
-void rr(stack_t **stack_a, stack_t **stack_b);
+void	rotate(t_stack **stack);
+void	ra(t_stack **stack_a);
+void	rb(t_stack **stack_b);
+void rr(t_stack **stack_a, t_stack **stack_b);
 // -> Swap
-void	swap(stack_t **stack);
-void	sa(stack_t **stack_a);
-void	sb(stack_t **stack_b);
-void	ss(stack_t **stack_a, stack_t **stack_b);
+void	swap(t_stack **stack);
+void	sa(t_stack **stack_a);
+void	sb(t_stack **stack_b);
+void	ss(t_stack **stack_a, t_stack **stack_b);
 
 // error handle
 void	check_arg(int argc, char **argv);
