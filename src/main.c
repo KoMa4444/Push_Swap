@@ -6,7 +6,7 @@
 /*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:01:04 by mkollar           #+#    #+#             */
-/*   Updated: 2025/03/24 19:27:14 by mkollar          ###   ########.fr       */
+/*   Updated: 2025/03/24 20:27:10 by mkollar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 	check_input(argc, argv);
 	sta = get_stack(argc, argv);
 	stb = NULL;
-	push_swap(&sta, &stb);
+	sorting_checks(&sta, &stb);
 	print_stack(sta);
 	free_stack(&sta);
 	free_stack(&stb);

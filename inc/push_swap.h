@@ -22,10 +22,14 @@ typedef struct s_moves
 typedef enum e_out
 {
 	OK = 0,
-	INPUT_ERROR = 1, 
-	MALLOC_ERROR = 2,
-	BAD_INDEX = 3
+	EMPTY_INPUT,
+	INPUT_ERROR, 
+	MALLOC_ERROR,
+	BAD_INDEX
 } t_out;
+
+// algorithm
+void	sorting_checks(t_stack **sta, t_stack **stb);
 
 // input parse
 int		get_number(char *argv, int *counter);
