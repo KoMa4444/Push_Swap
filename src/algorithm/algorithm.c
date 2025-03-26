@@ -19,27 +19,41 @@ void	sort_three(t_stack **sta)
 
 	last = *sta;
 	tmp = *sta;
-	while (last->next != NULL)
-		last = last->next;
-	while (tmp->val > last->val)
-		rra(&tmp);
-	while (tmp->val > tmp->next->val)
-		sa(&tmp);
+	while (sorted_sta(tmp) == false)
+	{
+		last = get_last(tmp);
+		if (tmp->val > last->val)
+			rra(&tmp);
+		else if (tmp->val > tmp->next->val)
+			sa(&tmp);
+		else
+			rra(&tmp);
+	}
 	*sta = tmp;
 }
 
 void	sorting_checks(t_stack **sta, t_stack **stb)
 {
-	sort_three(sta);
-	add_to_stack(stb, 2);
+	int	len;
+	t_bool	sorted;
+
+	sorted = sorted_sta(*sta);
+	len = stk_len(*sta);
+	if (sorted == true)
+		return ;
+	else if (len == 2)
+		sa(sta);
+	else if (len == 3)
+		sort_three(sta);
+	else
+		push_swap(sta, stb);
 }
 
-void	find_target_a_to_b(t_stack *src, t_stack *targeted)
+void	find_target_a_to_b(t_stack **src, t_stack *targeted)
 {
 	// find the target for each node of sta, in stb
 	// the target is the closest smaller number in the other stack
-	(void)src;
-	(void)targeted;
+
 }
 
 int	move(t_stack **src, t_stack **dest)
@@ -51,20 +65,23 @@ int	move(t_stack **src, t_stack **dest)
 	return (0);
 }
 
-t_moves	*calculate_moves(t_stack *stack)
+t_moves	*calculate_moves(t_stack *sta, t_stack *stb)
 {
 	// return a a t_move where t_move->moves is the amout of operations that it will take for
 	// the program to push a number to its target and t_move->id is the value that the number has
 	// cause they cant be repeated, each node will have a t_move corresponding to it
 
 	//make another function for actually doing the moves
-	(void)stack;
+	(void)sta;
+	(void)stb;
 	return NULL;
 }
 
 void	push_swap(t_stack **sta, t_stack **stb)
 {
 	// where the algorithm happens, sends and sorts b then it pushes it back to stack a
+	while (stk_len(*stb) < 2 && stk_len(*sta) > 3)
+		pb(sta, stb);
 	(void)sta;
 	(void)stb;
 }

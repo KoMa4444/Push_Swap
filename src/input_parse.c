@@ -12,13 +12,15 @@
 
 #include "../inc/push_swap.h"
 
-int	get_number(char *argv, int *counter)
+long long	get_number(char *argv, int *counter)
 {
 	char	*tmp;
-	int		val;
+	long long	val;
 	int		i;
 
 	i = 1;
+	if (argv[i] == '+' || argv[i] == '-')
+		i++;
 	while (argv[i] && ft_isdigit(argv[i]) == 1)
 		i++;
 	tmp = ft_substr(argv, 0, i);
@@ -28,6 +30,29 @@ int	get_number(char *argv, int *counter)
 	free(tmp);
 	*counter += i;
 	return (val);
+}
+
+void	ft_no_repeat(t_stack **sta)
+{
+	t_stack *chk;
+	t_stack *tmp;
+
+	chk = *sta;
+	while (chk->next != NULL)
+	{
+		tmp = *sta;
+		while (tmp)
+		{
+			if (tmp->val == chk->val && tmp != chk)
+			{
+				ft_printf("\033[31mERROR: Please, do not repeat any number ;-;\nRepeated num: %i", tmp->val);
+				free_stack(sta);
+				exit(REPEATED_NUMBER);
+			}
+			tmp = tmp->next;
+		}
+		chk = chk->next;
+	}
 }
 
 t_stack	*get_stack(int argc, char **argv)
@@ -43,7 +68,7 @@ t_stack	*get_stack(int argc, char **argv)
 		j = 0;
 		while (argv[i][j])
 		{
-			if (ft_isdigit(argv[i][j]) == 1)
+			if (ft_isdigit(argv[i][j]) == 1 || argv[i][j] == '+' || argv[i][j] == '-')
 				add_to_stack(&stack_a, get_number((argv[i]) + j, &j));
 			else
 				j++;

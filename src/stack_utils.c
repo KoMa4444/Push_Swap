@@ -16,11 +16,12 @@ int	stk_len(t_stack *st)
 {
 	int	i;
 
-	if (!st)
-		return (-1);
 	i = 0;
-	while (st->next != NULL)
+	while (st)
+	{
+		st = st->next;
 		i++;
+	}
 	return (i);
 }
 
@@ -31,12 +32,11 @@ void	print_stack(t_stack *stack)
 	if (!stack)
 		return ;
 	tmp = stack;
-	while (tmp->next != NULL)
+	while (tmp)
 	{
 		ft_printf("%i\n", tmp->val);
 		tmp = tmp->next;
 	}
-	ft_printf("%i\n", tmp->val);
 }
 
 void	add_to_stack(t_stack **stack, int val)
@@ -82,7 +82,7 @@ t_stack	*get_last(t_stack *stack)
 	t_stack	*tmp;
 
 	tmp = stack;
-	while (tmp->next->val != 0)
+	while (tmp->next != NULL)
 		tmp = tmp->next;
 	return (tmp);
 }

@@ -19,10 +19,10 @@ int	main(int argc, char **argv)
 
 	check_input(argc, argv);
 	sta = get_stack(argc, argv);
+	ft_no_repeat(&sta);
 	stb = NULL;
 	sorting_checks(&sta, &stb);
 	print_stack(sta);
 	free_stack(&sta);
-	free_stack(&stb);
 	return (OK);
 }
