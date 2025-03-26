@@ -22,7 +22,14 @@ int	main(int argc, char **argv)
 	ft_no_repeat(&sta);
 	stb = NULL;
 	sorting_checks(&sta, &stb);
+	printf("\nsta\n");
 	print_stack(sta);
 	free_stack(&sta);
+	if (stb)
+	{
+		printf("\nstb\n");
+		print_stack(stb);
+		free_stack(&stb);
+	}
 	return (OK);
 }

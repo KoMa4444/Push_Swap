@@ -53,7 +53,8 @@ void	find_target_a_to_b(t_stack **src, t_stack *targeted)
 {
 	// find the target for each node of sta, in stb
 	// the target is the closest smaller number in the other stack
-
+	(void)src;
+	(void)targeted;
 }
 
 int	move(t_stack **src, t_stack **dest)

@@ -34,7 +34,7 @@ void			sorting_checks(t_stack **sta, t_stack **stb);
 void			push_swap(t_stack **sta, t_stack **stb);
 t_moves		*calculate_moves(t_stack *sta, t_stack *stb);
 int				move(t_stack **src, t_stack **dest);
-void			find_target_a_to_b(t_stack *src, t_stack *targeted);
+void			find_target_a_to_b(t_stack **src, t_stack *targeted);
 void			sort_three(t_stack **sta);
 // -> check_sorted
 t_bool		sorted_sta(t_stack *sta);
