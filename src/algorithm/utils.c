@@ -6,8 +6,8 @@ void	set_max_min(t_stack **st)
 	t_stack	*tmp;
 
 	tmp = *st;
-	tmp->max == tmp->val;
-	tmp->min == tmp->val;
+	tmp->max = tmp->val;
+	tmp->min = tmp->val;
 	while (tmp)
 	{
 		if (tmp->val > (*st)->max)

@@ -6,7 +6,7 @@
 /*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:00:42 by mkollar           #+#    #+#             */
-/*   Updated: 2025/03/24 20:33:19 by mkollar          ###   ########.fr       */
+/*   Updated: 2025/03/27 19:02:03 by mkollar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	sorting_checks(t_stack **sta, t_stack **stb)
 
 	sorted = sorted_sta(*sta);
 	len = stk_len(*sta);
-	if (sorted == true)
+	if (sorted == true && *stb == NULL)
 		return ;
 	else if (len == 2)
 		sa(sta);
@@ -47,6 +47,7 @@ void	sorting_checks(t_stack **sta, t_stack **stb)
 		sort_three(sta);
 	else
 		push_swap(sta, stb);
+	sorting_checks(sta, stb);
 }
 
 void	find_target_a_to_b(t_stack **src, t_stack *targeted)
@@ -83,6 +84,11 @@ void	push_swap(t_stack **sta, t_stack **stb)
 	// where the algorithm happens, sends and sorts b then it pushes it back to stack a
 	while (stk_len(*stb) < 2 && stk_len(*sta) > 3)
 		pb(sta, stb);
-	(void)sta;
-	(void)stb;
+	while (sorted_sta(*sta) == false || *stb != NULL)
+	{
+		set_max_min(stb);
+		find_target_a_to_b(sta, *stb);
+		
+	}
+	sorting_checks(sta, stb);
 }
