@@ -6,7 +6,7 @@
 /*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:01:10 by mkollar           #+#    #+#             */
-/*   Updated: 2025/03/24 19:04:50 by mkollar          ###   ########.fr       */
+/*   Updated: 2025/03/28 16:30:29 by mkollar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	print_stack(t_stack *stack)
 	tmp = stack;
 	while (tmp)
 	{
-		ft_printf("%i\n", tmp->val);
+		ft_printf("[*]	%i   My target is = %i\n", tmp->val, tmp->target);
 		tmp = tmp->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:00:42 by mkollar           #+#    #+#             */
-/*   Updated: 2025/03/27 19:02:03 by mkollar          ###   ########.fr       */
+/*   Updated: 2025/03/28 16:36:13 by mkollar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,24 @@ void	sorting_checks(t_stack **sta, t_stack **stb)
 
 void	find_target_a_to_b(t_stack **src, t_stack *targeted)
 {
-	// find the target for each node of sta, in stb
-	// the target is the closest smaller number in the other stack
-	(void)src;
-	(void)targeted;
+	t_stack	*tmp;
+	t_stack	*chk;
+
+	tmp = *src;
+	while (tmp)
+	{
+		chk = targeted;
+		tmp->target = chk->min;
+		while (chk)
+		{
+			if (chk->val < tmp->val && chk->val > tmp->target)
+				tmp->target = chk->val;
+			chk = chk->next;
+		}
+		if (tmp->val < tmp->target)
+			tmp->target = targeted->max;
+		tmp = tmp->next;
+	}
 }
 
 int	move(t_stack **src, t_stack **dest)
@@ -73,6 +87,7 @@ t_moves	*calculate_moves(t_stack *sta, t_stack *stb)
 	// the program to push a number to its target and t_move->id is the value that the number has
 	// cause they cant be repeated, each node will have a t_move corresponding to it
 
+
 	//make another function for actually doing the moves
 	(void)sta;
 	(void)stb;
@@ -84,11 +99,8 @@ void	push_swap(t_stack **sta, t_stack **stb)
 	// where the algorithm happens, sends and sorts b then it pushes it back to stack a
 	while (stk_len(*stb) < 2 && stk_len(*sta) > 3)
 		pb(sta, stb);
-	while (sorted_sta(*sta) == false || *stb != NULL)
-	{
-		set_max_min(stb);
-		find_target_a_to_b(sta, *stb);
-		
-	}
-	sorting_checks(sta, stb);
+	set_max_min(stb);
+	find_target_a_to_b(sta, *stb);
+	print_stack(*sta);
+	exit(0);
 }
