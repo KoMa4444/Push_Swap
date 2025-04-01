@@ -6,7 +6,7 @@
 /*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:00:42 by mkollar           #+#    #+#             */
-/*   Updated: 2025/04/01 19:14:16 by mkollar          ###   ########.fr       */
+/*   Updated: 2025/04/01 20:29:32 by mkollar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,49 +91,6 @@ void	add_b_cost(t_stack **sta, t_stack **stb, int *cost)
 	t_stack	*tmp_b;
 	int		i;
 	int		median;
-}
-
-t_bool	ft_above_median(int median, int index)
-{
-	if (index <= median)
-		return false;
-	else if (index > median)
-		return true;
-}
-
-void	ft_median_and_cost(t_stack **st, int median, int index, int len)
-{
-	t_stack *tmp;
-
-	tmp = *st;
-	tmp->ab_med = ft_above_median(median, index);
-	if (tmp->ab_med == false)
-		tmp->cost = index;
-	else
-		tmp->cost = len - index;
-}
-
-void	calculate_cost(t_stack **sta, t_stack **stb)
-{
-	t_stack	*tmp_a;
-	t_stack	*tmp_b;
-	int			cost;
-	int			median;
-	int			len;
-
-	tmp_a = *sta;
-	tmp_b = *stb;
-	len = stk_len(*sta);
-	cost = 0;
-	median = len / 2;
-	while (tmp_a)
-	{
-		ft_median_and_cost(&tmp_a, median, cost, len);
-		add_b_cost(&tmp_a, &tmp_b, &tmp_a->cost);
-	}
-	(void)sta;
-	(void)stb;
-	return NULL;
 }
 
 void	push_swap(t_stack **sta, t_stack **stb)

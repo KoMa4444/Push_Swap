@@ -6,7 +6,7 @@
 /*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 18:48:24 by mkollar           #+#    #+#             */
-/*   Updated: 2025/04/01 20:16:30 by mkollar          ###   ########.fr       */
+/*   Updated: 2025/04/01 20:29:32 by mkollar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	least_cost(t_stack **sta, t_stack **stb)
 {
-
+	
 }
 
 t_bool	ft_above_median(int median, int index)

@@ -6,7 +6,7 @@
 /*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:49:10 by mkollar           #+#    #+#             */
-/*   Updated: 2025/04/01 20:21:26 by mkollar          ###   ########.fr       */
+/*   Updated: 2025/04/01 20:31:41 by mkollar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,17 @@ typedef struct s_stack
 	long long				target;
 	long long				max;
 	long long				min;
+	t_bool					ab_med;
+	t_options				opt;
 	struct s_stack	*prev;
 	struct s_stack	*next;
-	t_bool					ab_med;
 }	t_stack;
 
 typedef enum e_options
 {
-
+	same = 0,
+	rb_faster = 1,
+	rrb_faster = 2,
 }	t_options;
 
 typedef enum e_out
