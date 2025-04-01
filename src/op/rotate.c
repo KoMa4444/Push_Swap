@@ -6,7 +6,7 @@
 /*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:01:19 by mkollar           #+#    #+#             */
-/*   Updated: 2025/03/24 19:04:50 by mkollar          ###   ########.fr       */
+/*   Updated: 2025/04/01 18:01:00 by mkollar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	rb(t_stack	**stack_b)
 	rotate(stack_b);
 }
 
-void rr(t_stack **stack_a, t_stack **stack_b)
+void	rr(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_putstr_fd("rr\n", 1);
 	rotate(stack_a);

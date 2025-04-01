@@ -6,7 +6,7 @@
 /*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:51:14 by mkollar           #+#    #+#             */
-/*   Updated: 2025/03/24 19:37:46 by mkollar          ###   ########.fr       */
+/*   Updated: 2025/04/01 17:50:29 by mkollar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef enum e_bool
 {
 	true = 1,
 	false = 0
-} t_bool;
+}	t_bool;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);

@@ -6,7 +6,7 @@
 /*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 14:37:52 by mkollar           #+#    #+#             */
-/*   Updated: 2024/09/17 15:23:52 by mkollar          ###   ########.fr       */
+/*   Updated: 2025/04/01 17:48:55 by mkollar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	ft_is_space(char c)
 long long	ft_atoi(const char *nptr)
 {
 	long long	num;
-	int	i;
-	int	sign;
+	int			i;
+	int			sign;
 
 	sign = 1;
 	i = 0;

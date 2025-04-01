@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/01 17:49:10 by mkollar           #+#    #+#             */
+/*   Updated: 2025/04/01 20:21:26 by mkollar          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 #	define PUSH_SWAP_H
 
@@ -6,18 +18,19 @@
 typedef struct s_stack
 {
 	long long				val;
+	int							cost;
 	long long				target;
 	long long				max;
 	long long				min;
 	struct s_stack	*prev;
 	struct s_stack	*next;
+	t_bool					ab_med;
 }	t_stack;
 
-typedef struct s_moves
+typedef enum e_options
 {
-	long long		id;
-	int					moves;
-}	t_moves;
+
+}	t_options;
 
 typedef enum e_out
 {
@@ -27,12 +40,12 @@ typedef enum e_out
 	REPEATED_NUMBER,
 	MALLOC_ERROR,
 	BAD_INDEX
-} t_out;
+}	t_out;
 
 // algorithm
 void			sorting_checks(t_stack **sta, t_stack **stb);
 void			push_swap(t_stack **sta, t_stack **stb);
-t_moves		*calculate_moves(t_stack *sta, t_stack *stb);
+void			*calculate_moves(t_stack *sta, t_stack *stb);
 int				move(t_stack **src, t_stack **dest);
 void			find_target_a_to_b(t_stack **src, t_stack *targeted);
 void			sort_three(t_stack **sta);
@@ -41,6 +54,11 @@ t_bool		sorted_sta(t_stack *sta);
 t_bool		sorted_stb(t_stack *stb);
 // -> utils
 void			set_max_min(t_stack **st);
+// -> costs
+void	add_b_cost(t_stack **sta, t_stack **stb);
+void			calculate_cost(t_stack **sta, t_stack **stb);
+void			ft_median_and_cost(t_stack **st, int median, int index, int len);
+t_bool		ft_above_median(int median, int index);
 
 // input parse
 long long	get_number(char *argv, int *counter);
