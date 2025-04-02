@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: koma <koma@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:00:42 by mkollar           #+#    #+#             */
-/*   Updated: 2025/04/01 20:29:32 by mkollar          ###   ########.fr       */
+/*   Updated: 2025/04/02 19:52:20 by koma             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,25 +81,20 @@ int	move(t_stack **src, t_stack **dest)
 	return (0);
 }
 
-void	least_move()
-{
-
-}
-
-void	add_b_cost(t_stack **sta, t_stack **stb, int *cost)
-{
-	t_stack	*tmp_b;
-	int		i;
-	int		median;
-}
-
 void	push_swap(t_stack **sta, t_stack **stb)
 {
 	// where the algorithm happens, sends and sorts b then it pushes it back to stack a
 	while (stk_len(*stb) < 2 && stk_len(*sta) > 3)
 		pb(sta, stb);
-	set_max_min(stb);
-	find_target_a_to_b(sta, *stb);
+	while (stk_len(*sta) > 3)
+	{
+		set_max_min(stb);
+		find_target_a_to_b(sta, *stb);
+		calculate_cost(sta, stb);
+		ft_move_st(sta, stb);
+	}
+	while (sorted_stb(*stb) != true)
+		rb(stb);
 	print_stack(*sta);
 	exit(0);
 }

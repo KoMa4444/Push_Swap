@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_parse.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: koma <koma@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:00:56 by mkollar           #+#    #+#             */
-/*   Updated: 2025/04/01 17:59:53 by mkollar          ###   ########.fr       */
+/*   Updated: 2025/04/02 19:51:04 by koma             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ t_stack	*get_stack(int argc, char **argv)
 				add_to_stack(&stack_a, get_number((argv[i]) + j, &j));
 			else
 				j++;
+			stack_a->q_target = same;
 		}
 		i++;
 	}

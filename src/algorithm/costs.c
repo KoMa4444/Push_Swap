@@ -3,25 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   costs.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: koma <koma@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 18:48:24 by mkollar           #+#    #+#             */
-/*   Updated: 2025/04/01 20:29:32 by mkollar          ###   ########.fr       */
+/*   Updated: 2025/04/02 19:55:03 by koma             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-void	least_cost(t_stack **sta, t_stack **stb)
+void	least_cost(t_stack **sta, t_stack **stb, int b_i, int b_len)
 {
-	
+	t_stack *tmp_a;
+	t_stack *tmp_b;
+
+	tmp_a = *sta;
+	tmp_b = *stb;
+	if (tmp_b->ab_med == true)
+	{
+		if ((b_i - tmp_a->cost) < tmp_b->cost)
+		{
+			tmp_a->q_target = rb_faster;
+			if ((b_i - tmp_a->cost) > 0)
+				tmp_a->cost += b_i - tmp_a->cost;
+		}
+		else
+		{
+			tmp_a->q_target = rrb_faster;
+			tmp_a->cost += tmp_b->cost;
+		}
+	}
+	else
+	{
+		if ((b_len - b_i - tmp_a->cost) < tmp_b->cost)
+		{
+			tmp_a->q_target = rrb_faster;
+			if ((b_len - b_i - tmp_a->cost) > 0)
+				tmp_a->cost += b_i - tmp_a->cost;
+		}
+		else
+		{
+			tmp_a->q_target = rb_faster;
+			tmp_a->cost += tmp_b->cost;
+		}
+	}
 }
 
 t_bool	ft_above_median(int median, int index)
 {
 	if (index <= median)
 		return false;
-	else if (index > median)
+	else
 		return true;
 }
 
@@ -44,10 +76,10 @@ void	add_b_cost(t_stack **sta, t_stack **stb)
 	int		len;
 	int		i;
 
-	len = stk_len(tmp_b);
 	i = 0;
 	tmp_a = *sta;
 	tmp_b = *stb;
+	len = stk_len(tmp_b);
 	while (tmp_b->val != tmp_a->target)
 	{
 		i++;
@@ -62,7 +94,7 @@ void	add_b_cost(t_stack **sta, t_stack **stb)
 			tmp_a->cost += (tmp_b->cost - tmp_a->cost);
 	}
 	else
-		least_cost(&tmp_a, &tmp_b)
+		least_cost(&tmp_a, &tmp_b, i, len);
 }
 
 void	calculate_cost(t_stack **sta, t_stack **stb)
@@ -83,7 +115,4 @@ void	calculate_cost(t_stack **sta, t_stack **stb)
 		ft_median_and_cost(&tmp_a, median, cost, len);
 		add_b_cost(&tmp_a, &tmp_b);
 	}
-	(void)sta;
-	(void)stb;
-	return NULL;
 }

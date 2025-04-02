@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: koma <koma@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:49:10 by mkollar           #+#    #+#             */
-/*   Updated: 2025/04/01 20:31:41 by mkollar          ###   ########.fr       */
+/*   Updated: 2025/04/02 19:51:37 by koma             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 #	define PUSH_SWAP_H
 
 #	include "libft.h"
+
+typedef enum e_options
+{
+	same = 0,
+	rb_faster = 1,
+	rrb_faster = 2
+}	t_options;
 
 typedef struct s_stack
 {
@@ -23,17 +30,10 @@ typedef struct s_stack
 	long long				max;
 	long long				min;
 	t_bool					ab_med;
-	t_options				opt;
+	t_options				q_target;
 	struct s_stack	*prev;
 	struct s_stack	*next;
 }	t_stack;
-
-typedef enum e_options
-{
-	same = 0,
-	rb_faster = 1,
-	rrb_faster = 2,
-}	t_options;
 
 typedef enum e_out
 {
@@ -58,10 +58,15 @@ t_bool		sorted_stb(t_stack *stb);
 // -> utils
 void			set_max_min(t_stack **st);
 // -> costs
-void	add_b_cost(t_stack **sta, t_stack **stb);
+void			add_b_cost(t_stack **sta, t_stack **stb);
 void			calculate_cost(t_stack **sta, t_stack **stb);
 void			ft_median_and_cost(t_stack **st, int median, int index, int len);
 t_bool		ft_above_median(int median, int index);
+// -> move
+t_stack		*ft_find_lowest_cost(t_stack *st);
+void			ft_move_ab_med(t_stack **sta, t_stack **stb, t_stack *cheap);
+void			ft_move_be_med(t_stack **sta, t_stack **stb, t_stack *cheap);
+void			ft_move_st(t_stack **sta, t_stack **stb);
 
 // input parse
 long long	get_number(char *argv, int *counter);
