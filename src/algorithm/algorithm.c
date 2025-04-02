@@ -6,7 +6,7 @@
 /*   By: koma <koma@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:00:42 by mkollar           #+#    #+#             */
-/*   Updated: 2025/04/02 19:52:20 by koma             ###   ########.fr       */
+/*   Updated: 2025/04/02 20:09:05 by koma             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,9 @@ void	push_swap(t_stack **sta, t_stack **stb)
 	}
 	while (sorted_stb(*stb) != true)
 		rb(stb);
+	ft_printf("\nsta\n\n");
 	print_stack(*sta);
-	exit(0);
+	ft_printf("\nstb\n\n");
+	print_stack(*stb);
+	exit(12);
 }

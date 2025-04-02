@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: koma <koma@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:01:10 by mkollar           #+#    #+#             */
-/*   Updated: 2025/04/01 18:01:41 by mkollar          ###   ########.fr       */
+/*   Updated: 2025/04/02 20:12:56 by koma             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	print_stack(t_stack *stack)
 	tmp = stack;
 	while (tmp)
 	{
-		ft_printf("[*]	%i   My target is = %i\n", tmp->val, tmp->target);
+		ft_printf("[*]	%i	My target is = %i\n", tmp->val, tmp->target);
 		tmp = tmp->next;
 	}
 }

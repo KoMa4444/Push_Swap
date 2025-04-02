@@ -6,7 +6,7 @@
 /*   By: koma <koma@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 18:48:24 by mkollar           #+#    #+#             */
-/*   Updated: 2025/04/02 19:55:03 by koma             ###   ########.fr       */
+/*   Updated: 2025/04/02 20:04:56 by koma             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,6 @@ void	calculate_cost(t_stack **sta, t_stack **stb)
 	{
 		ft_median_and_cost(&tmp_a, median, cost, len);
 		add_b_cost(&tmp_a, &tmp_b);
+		tmp_a = tmp_a->next;
 	}
 }
