@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: koma <koma@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 18:01:19 by mkollar           #+#    #+#             */
-/*   Updated: 2025/04/01 18:01:20 by mkollar          ###   ########.fr       */
+/*   Updated: 2025/04/03 20:31:31 by koma             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 t_bool	sorted_sta(t_stack *sta)
 {
+	if (!sta)
+		return (false);
 	while (sta->next != NULL)
 	{
 		sta = sta->next;
@@ -25,6 +27,8 @@ t_bool	sorted_sta(t_stack *sta)
 
 t_bool	sorted_stb(t_stack *stb)
 {
+	if (!stb)
+		return (false);
 	while (stb->next != NULL)
 	{
 		stb = stb->next;

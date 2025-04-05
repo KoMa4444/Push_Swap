@@ -5,7 +5,8 @@ C_FLAGS	=	-Wall -Wextra -Werror -g
 
 SRC			=	src/error_management.c src/main.c src/input_parse.c src/stack_utils.c	\
 					src/op/push.c src/op/swap.c src/op/rotate.c src/op/rev_rotate.c src/algorithm/algorithm.c \
-					src/algorithm/check_sort.c src/algorithm/utils.c src/algorithm/move.c src/algorithm/costs.c
+					src/algorithm/check_sort.c src/algorithm/utils.c src/algorithm/move.c src/algorithm/costs.c \
+					src/algorithm/push_back.c
 OBJ			=	$(SRC:.c=.o)
 
 HEADER	=	-Iinc

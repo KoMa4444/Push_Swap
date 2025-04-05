@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: koma <koma@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:00:48 by mkollar           #+#    #+#             */
-/*   Updated: 2025/04/01 17:59:51 by mkollar          ###   ########.fr       */
+/*   Updated: 2025/04/03 21:19:30 by koma             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_bool ft_is_sign(char c)
 
 t_bool	valid_input(char c)
 {
-	return (ft_isdigit(c) == 1 || (c == ' ' || c == '\0') || ft_is_sign(c) == true);
+	return (ft_isdigit(c) == 1 || (c == ' ' || c == '\0') || ft_is_sign(c) == true || c == ',');
 }
 
 void	check_arg(int argc, char **argv)

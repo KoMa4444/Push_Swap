@@ -1,0 +1,14 @@
+#!/bin/python3
+
+from random import shuffle
+min = input("[*]	From:	")
+max = input("[*]	Till:	")
+arr = []
+
+for i in range(int(min), int(max)):
+	arr.append(i)
+
+shuffle(arr)
+
+for i in range(int(min), int(max)):
+	print(f"{arr[i]}", end = " ")

@@ -6,7 +6,7 @@
 /*   By: koma <koma@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:00:42 by mkollar           #+#    #+#             */
-/*   Updated: 2025/04/02 20:09:05 by koma             ###   ########.fr       */
+/*   Updated: 2025/04/05 17:45:35 by koma             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,12 @@ void	sorting_checks(t_stack **sta, t_stack **stb)
 	len = stk_len(*sta);
 	if (sorted == true && *stb == NULL)
 		return ;
-	else if (len == 2)
+	else if (len == 2 && (*sta)->val > (*sta)->next->val)
 		sa(sta);
 	else if (len == 3)
 		sort_three(sta);
 	else
 		push_swap(sta, stb);
-	sorting_checks(sta, stb);
 }
 
 void	find_target_a_to_b(t_stack **src, t_stack *targeted)
@@ -62,28 +61,21 @@ void	find_target_a_to_b(t_stack **src, t_stack *targeted)
 		tmp->target = chk->min;
 		while (chk)
 		{
-			if (chk->val < tmp->val && chk->val > tmp->target)
+			if (tmp->val < chk->min || tmp->val > chk->max)
+			{
+				tmp->target = chk->max;
+				break ;
+			}
+			else if (chk->val < tmp->val && chk->val > tmp->target)
 				tmp->target = chk->val;
 			chk = chk->next;
 		}
-		if (tmp->val < tmp->target)
-			tmp->target = targeted->max;
 		tmp = tmp->next;
 	}
 }
 
-int	move(t_stack **src, t_stack **dest)
-{
-	int	moves;
-	(void)moves;
-	(void)src;
-	(void)dest;
-	return (0);
-}
-
 void	push_swap(t_stack **sta, t_stack **stb)
 {
-	// where the algorithm happens, sends and sorts b then it pushes it back to stack a
 	while (stk_len(*stb) < 2 && stk_len(*sta) > 3)
 		pb(sta, stb);
 	while (stk_len(*sta) > 3)
@@ -95,9 +87,4 @@ void	push_swap(t_stack **sta, t_stack **stb)
 	}
 	while (sorted_stb(*stb) != true)
 		rb(stb);
-	ft_printf("\nsta\n\n");
-	print_stack(*sta);
-	ft_printf("\nstb\n\n");
-	print_stack(*stb);
-	exit(12);
 }

@@ -6,7 +6,7 @@
 /*   By: koma <koma@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:49:10 by mkollar           #+#    #+#             */
-/*   Updated: 2025/04/02 19:51:37 by koma             ###   ########.fr       */
+/*   Updated: 2025/04/03 20:38:50 by koma             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ t_stack		*ft_find_lowest_cost(t_stack *st);
 void			ft_move_ab_med(t_stack **sta, t_stack **stb, t_stack *cheap);
 void			ft_move_be_med(t_stack **sta, t_stack **stb, t_stack *cheap);
 void			ft_move_st(t_stack **sta, t_stack **stb);
+// -> push_back
+void			push_back(t_stack **sta, t_stack **stb);
 
 // input parse
 long long	get_number(char *argv, int *counter);
