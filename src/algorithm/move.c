@@ -14,22 +14,17 @@ t_stack	*ft_find_lowest_cost(t_stack *st)
 	}
 	return (cheapest);
 }
+
 void	ft_move_ab_med(t_stack **sta, t_stack **stb, t_stack *cheap)
 {
 	if (cheap->q_target == same || cheap->q_target == rrb_faster)
 	{
 		while ((*sta)->val != cheap->val && (*stb)->val != cheap->target)
 			rrr(sta, stb);
-		if ((*sta)->val == cheap->val)
-		{
-			while ((*stb)->val != cheap->target)
-				rrb(stb);
-		}
-		else
-		{
-			while ((*sta)->val != cheap->val)
-				rra(sta);
-		}
+		while ((*stb)->val != cheap->target)
+			rrb(stb);
+		while ((*sta)->val != cheap->val)
+			rra(sta);
 	}
 	else
 	{
@@ -46,16 +41,10 @@ void	ft_move_be_med(t_stack **sta, t_stack **stb, t_stack *cheap)
 	{
 		while ((*sta)->val != cheap->val && (*stb)->val != cheap->target)
 			rr(sta, stb);
-		if ((*sta)->val == cheap->val)
-		{
-			while ((*stb)->val != cheap->target)
-				rb(stb);
-		}
-		else
-		{
-			while ((*sta)->val != cheap->val)
-				ra(sta);
-		}
+		while ((*stb)->val != cheap->target)
+			rb(stb);
+		while ((*sta)->val != cheap->val)
+			ra(sta);
 	}
 	else
 	{
