@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   costs.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: koma <koma@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 18:48:24 by mkollar           #+#    #+#             */
-/*   Updated: 2025/04/02 20:04:56 by koma             ###   ########.fr       */
+/*   Updated: 2025/04/08 17:11:38 by mkollar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	add_b_cost(t_stack **sta, t_stack **stb)
 	ft_median_and_cost(&tmp_b, len / 2, i, len);
 	if (tmp_a->ab_med == tmp_b->ab_med)
 	{
+		tmp_a->q_target = same;
 		if (tmp_a->cost >= tmp_b->cost)
 			return ;
 		else
@@ -108,12 +109,13 @@ void	calculate_cost(t_stack **sta, t_stack **stb)
 	tmp_a = *sta;
 	tmp_b = *stb;
 	len = stk_len(*sta);
-	cost = 0;
+	cost = 1;
 	median = len / 2;
 	while (tmp_a)
 	{
 		ft_median_and_cost(&tmp_a, median, cost, len);
 		add_b_cost(&tmp_a, &tmp_b);
 		tmp_a = tmp_a->next;
+		cost++;
 	}
 }

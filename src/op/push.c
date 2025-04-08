@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: koma <koma@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:01:28 by mkollar           #+#    #+#             */
-/*   Updated: 2025/04/03 20:55:24 by koma             ###   ########.fr       */
+/*   Updated: 2025/04/08 17:53:38 by mkollar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,21 @@
 
 void	push(t_stack **src, t_stack **dst)
 {
-	t_stack	*new;
-	t_stack	*next;
-
-	new = (t_stack *)ft_calloc(1, sizeof(t_stack));
-	if (!new)
-		exit_malloc_error();
-	new->val = (*src)->val;
 	if ((*src)->next)
 	{
-		next = (*src)->next;
-		free((*src));
-		(*src) = next;
+		(*src) = (*src)->next;
+		(*src)->prev->next = (*dst);
+		(*dst) = (*src)->prev;
+		(*src)->prev = NULL;
+		if ((*dst)->next)
+			(*dst)->next->prev = (*dst);
 	}
 	else
 	{
-		free(*src);
-		*src = NULL;
+		(*src)->next = (*dst);
+		(*dst) = (*src);
+		(*src) = NULL;
 	}
-	new->next = (*dst);
-	(*dst) = new;
-	if ((*dst)->next != NULL)
-		(*dst)->next->prev = *dst;
 }
 
 void	pa(t_stack **stack_b, t_stack **stack_a)

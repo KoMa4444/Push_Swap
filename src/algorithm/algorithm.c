@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: koma <koma@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:00:42 by mkollar           #+#    #+#             */
-/*   Updated: 2025/04/05 17:45:35 by koma             ###   ########.fr       */
+/*   Updated: 2025/04/08 18:26:11 by mkollar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	sorting_checks(t_stack **sta, t_stack **stb)
 	len = stk_len(*sta);
 	if (sorted == true && *stb == NULL)
 		return ;
+	else if (sorted_stb(*stb) == true && len == 3)
+		push_back(sta, stb);
 	else if (len == 2 && (*sta)->val > (*sta)->next->val)
 		sa(sta);
 	else if (len == 3)
@@ -74,6 +76,32 @@ void	find_target_a_to_b(t_stack **src, t_stack *targeted)
 	}
 }
 
+void	end_b_sort(t_stack **stb)
+{
+	t_stack	*tmp;
+	int		index;
+
+	tmp = *stb;
+	set_max_min(stb);
+	index = 0;
+	while (tmp->val != tmp->max)
+	{
+		tmp = tmp->next;
+		index++;
+	}
+		tmp->ab_med = ft_above_median(stk_len(*stb) / 2, index);
+	if (tmp->ab_med == true)
+	{
+		while ((*stb)->val != tmp->max)
+			rrb(stb);
+	}
+	else
+	{
+		while ((*stb)->val != tmp->max)
+			rb(stb);
+	}
+}
+
 void	push_swap(t_stack **sta, t_stack **stb)
 {
 	while (stk_len(*stb) < 2 && stk_len(*sta) > 3)
@@ -85,6 +113,6 @@ void	push_swap(t_stack **sta, t_stack **stb)
 		calculate_cost(sta, stb);
 		ft_move_st(sta, stb);
 	}
-	while (sorted_stb(*stb) != true)
-		rb(stb);
+	end_b_sort(stb);
+	sorting_checks(sta, stb);
 }

@@ -10,5 +10,6 @@ for i in range(int(min), int(max)):
 
 shuffle(arr)
 
-for i in range(int(min), int(max)):
-	print(f"{arr[i]}", end = " ")
+with open("numbers.txt", "w") as fd:
+	for num in arr:
+		fd.write(f"{num} ")
