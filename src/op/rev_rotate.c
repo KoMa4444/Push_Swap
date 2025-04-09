@@ -6,7 +6,7 @@
 /*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:01:24 by mkollar           #+#    #+#             */
-/*   Updated: 2025/04/08 17:54:22 by mkollar          ###   ########.fr       */
+/*   Updated: 2025/04/09 17:26:54 by mkollar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 void	rev_rotate(t_stack **stack)
 {
-
  	t_stack	*last;
 	t_stack	*pre_last;
+
+	if (!*stack || stk_len(*stack) < 2)
+		return ;
 
 	last = *stack;
 	while (last->next != NULL)

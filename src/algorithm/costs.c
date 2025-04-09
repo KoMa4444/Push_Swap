@@ -6,7 +6,7 @@
 /*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 18:48:24 by mkollar           #+#    #+#             */
-/*   Updated: 2025/04/08 17:11:38 by mkollar          ###   ########.fr       */
+/*   Updated: 2025/04/09 16:38:05 by mkollar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	least_cost(t_stack **sta, t_stack **stb, int b_i, int b_len)
 		if ((b_i - tmp_a->cost) < tmp_b->cost)
 		{
 			tmp_a->q_target = rb_faster;
-			if ((b_i - tmp_a->cost) > 0)
-				tmp_a->cost += b_i - tmp_a->cost;
+			if (b_i > tmp_a->cost)
+				tmp_a->cost = b_i;
 		}
 		else
 		{
@@ -92,7 +92,7 @@ void	add_b_cost(t_stack **sta, t_stack **stb)
 		if (tmp_a->cost >= tmp_b->cost)
 			return ;
 		else
-			tmp_a->cost += (tmp_b->cost - tmp_a->cost);
+			tmp_a->cost = tmp_b->cost;
 	}
 	else
 		least_cost(&tmp_a, &tmp_b, i, len);

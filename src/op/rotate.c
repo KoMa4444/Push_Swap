@@ -6,7 +6,7 @@
 /*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:01:19 by mkollar           #+#    #+#             */
-/*   Updated: 2025/04/01 18:01:00 by mkollar          ###   ########.fr       */
+/*   Updated: 2025/04/09 17:26:54 by mkollar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,23 @@
 
 void	rotate(t_stack **stack)
 {
-	add_to_stack(stack, (*stack)->val);
-	(*stack) = (*stack)->next;
-	free((*stack)->prev);
+	t_stack	*moving;
+	t_stack *last;
+
+
+	if (!*stack || stk_len(*stack) < 2)
+		return ;
+	moving = *stack;
+	*stack = (*stack)->next;
+	moving->next = NULL;
+	(*stack)->prev = NULL;
+	last = *stack;
+	while (last->next)
+	{
+		last = last->next;
+	}
+	last->next = moving;
+	moving->prev = last;
 }
 
 void	ra(t_stack **stack_a)

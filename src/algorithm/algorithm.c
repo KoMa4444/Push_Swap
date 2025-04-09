@@ -6,7 +6,7 @@
 /*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:00:42 by mkollar           #+#    #+#             */
-/*   Updated: 2025/04/08 18:26:11 by mkollar          ###   ########.fr       */
+/*   Updated: 2025/04/09 17:26:58 by mkollar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	sort_three(t_stack **sta)
 	{
 		last = get_last(tmp);
 		if (tmp->val > last->val)
-			rra(&tmp);
+			ra(&tmp);
 		else if (tmp->val > tmp->next->val)
 			sa(&tmp);
 		else

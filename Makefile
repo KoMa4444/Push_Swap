@@ -1,4 +1,4 @@
-PROG		=	Push_Swap
+PROG		=	push_swap
 
 CC			=	cc
 C_FLAGS	=	-Wall -Wextra -Werror -g

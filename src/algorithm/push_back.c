@@ -5,17 +5,25 @@ void	get_b_targets(t_stack **stb, t_stack **sta)
 {
 	t_stack	*tmp_b;
 	t_stack	*tmp_a;
+	t_bool	set;
 
 	tmp_b = *stb;
 	tmp_a = *sta;
-	tmp_b->target = tmp_a->val;
+	set = false;
 	while (tmp_a)
 	{
-		if (tmp_a->val > tmp_b->val && tmp_a->val < tmp_b->target)
-			tmp_b->target = tmp_a->val;
+		if (!set || tmp_a->val > tmp_b->val)
+		{
+			if (!set || tmp_a->val < tmp_b->target)
+			{
+				tmp_b->target = tmp_a->val;
+				set = true;
+			}
+		}
 		tmp_a = tmp_a->next;
 	}
 }
+
 void	get_target_to_top(t_stack **stb, t_stack **sta)
 {
 	while ((*sta)->val != (*stb)->target)

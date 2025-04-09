@@ -6,7 +6,7 @@
 /*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:01:28 by mkollar           #+#    #+#             */
-/*   Updated: 2025/04/08 17:53:38 by mkollar          ###   ########.fr       */
+/*   Updated: 2025/04/09 17:26:55 by mkollar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,22 @@
 
 void	push(t_stack **src, t_stack **dst)
 {
+	t_stack	*moving;
+
 	if ((*src)->next)
 	{
+		moving = *src;
 		(*src) = (*src)->next;
-		(*src)->prev->next = (*dst);
-		(*dst) = (*src)->prev;
 		(*src)->prev = NULL;
-		if ((*dst)->next)
-			(*dst)->next->prev = (*dst);
+		moving->next = (*dst);
+		if (*dst)
+			(*dst)->prev = moving;
+		(*dst) = moving;
 	}
 	else
 	{
 		(*src)->next = (*dst);
+		(*dst)->prev = (*src);
 		(*dst) = (*src);
 		(*src) = NULL;
 	}
