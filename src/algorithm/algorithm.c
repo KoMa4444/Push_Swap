@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: koma <koma@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:00:42 by mkollar           #+#    #+#             */
-/*   Updated: 2025/04/09 17:26:58 by mkollar          ###   ########.fr       */
+/*   Updated: 2025/04/10 00:20:07 by koma             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	sorting_checks(t_stack **sta, t_stack **stb)
 	len = stk_len(*sta);
 	if (sorted == true && *stb == NULL)
 		return ;
-	else if (sorted_stb(*stb) == true && len == 3)
+ 	else if (*stb != NULL && len == 3)
 		push_back(sta, stb);
 	else if (len == 2 && (*sta)->val > (*sta)->next->val)
 		sa(sta);

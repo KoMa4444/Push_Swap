@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   costs.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: koma <koma@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 18:48:24 by mkollar           #+#    #+#             */
-/*   Updated: 2025/04/09 16:38:05 by mkollar          ###   ########.fr       */
+/*   Updated: 2025/04/09 23:43:50 by koma             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,12 @@ void	least_cost(t_stack **sta, t_stack **stb, int b_i, int b_len)
 
 	tmp_a = *sta;
 	tmp_b = *stb;
+	(void)b_len;
 	if (tmp_b->ab_med == true)
 	{
-		if ((b_i - tmp_a->cost) < tmp_b->cost)
+		tmp_a->q_target = rrb_faster;
+		tmp_a->cost += b_i;
+/* 		if ((b_i - tmp_a->cost) < tmp_b->cost)
 		{
 			tmp_a->q_target = rb_faster;
 			if (b_i > tmp_a->cost)
@@ -31,11 +34,13 @@ void	least_cost(t_stack **sta, t_stack **stb, int b_i, int b_len)
 		{
 			tmp_a->q_target = rrb_faster;
 			tmp_a->cost += tmp_b->cost;
-		}
+		} */
 	}
 	else
 	{
-		if ((b_len - b_i - tmp_a->cost) < tmp_b->cost)
+		tmp_a->q_target = rb_faster;
+		tmp_a->cost += b_i;
+		/* if ((b_len - b_i - tmp_a->cost) < tmp_b->cost)
 		{
 			tmp_a->q_target = rrb_faster;
 			if ((b_len - b_i - tmp_a->cost) > 0)
@@ -45,7 +50,7 @@ void	least_cost(t_stack **sta, t_stack **stb, int b_i, int b_len)
 		{
 			tmp_a->q_target = rb_faster;
 			tmp_a->cost += tmp_b->cost;
-		}
+		} */
 	}
 }
 
