@@ -156,7 +156,7 @@ do
 done < test_check.txt
 else
   printf "${RED}6.[KO] ${DEF_COLOR}\n";
-fi
+fi``
 
 rm -rf test_check.txt
 
