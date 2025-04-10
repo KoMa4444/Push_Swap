@@ -6,7 +6,7 @@
 /*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:01:04 by mkollar           #+#    #+#             */
-/*   Updated: 2025/04/09 17:19:34 by mkollar          ###   ########.fr       */
+/*   Updated: 2025/04/10 18:04:28 by mkollar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
 	ft_no_repeat(&sta);
 	stb = NULL;
 	sorting_checks(&sta, &stb);
+	//print_stack(sta);
 	free_stack(&sta);
 	if (stb)
 		free_stack(&stb);

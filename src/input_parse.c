@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_parse.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: koma <koma@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:00:56 by mkollar           #+#    #+#             */
-/*   Updated: 2025/04/02 19:51:04 by koma             ###   ########.fr       */
+/*   Updated: 2025/04/10 16:58:32 by mkollar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,16 @@ long long	get_number(char *argv, int *counter)
 	long long	val;
 	int		i;
 
-	i = 1;
+	i = 0;
 	if (argv[i] == '+' || argv[i] == '-')
 		i++;
 	while (argv[i] && ft_isdigit(argv[i]) == 1)
 		i++;
+	if (argv[i] != ' ' && argv[i] != '\0')
+	{
+		ft_putstr_fd("Error", 2);
+		exit(INPUT_ERROR);
+	}
 	tmp = ft_substr(argv, 0, i);
 	if (!tmp)
 		exit_malloc_error();

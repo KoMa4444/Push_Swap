@@ -1,6 +1,32 @@
 
 #include "../../inc/push_swap.h"
 
+void	end_a_sort(t_stack **sta)
+{
+	t_stack	*tmp;
+	int		index;
+
+	tmp = *sta;
+	set_max_min(sta);
+	index = 0;
+	while (tmp->val != tmp->min)
+	{
+		tmp = tmp->next;
+		index++;
+	}
+		tmp->ab_med = ft_above_median(stk_len(*sta) / 2, index);
+	if (tmp->ab_med == true)
+	{
+		while ((*sta)->val != tmp->min)
+			rra(sta);
+	}
+	else
+	{
+		while ((*sta)->val != tmp->min)
+			ra(sta);
+	}
+}
+
 void	get_b_targets(t_stack **stb, t_stack **sta)
 {
 	t_stack	*tmp_b;
@@ -14,7 +40,7 @@ void	get_b_targets(t_stack **stb, t_stack **sta)
 	{
 		if (!set || tmp_a->val > tmp_b->val)
 		{
-			if (!set || tmp_a->val < tmp_b->target)
+			if (!set || tmp_a->val < tmp_b->target || tmp_b->target < tmp_b->val)
 			{
 				tmp_b->target = tmp_a->val;
 				set = true;
@@ -66,4 +92,11 @@ void	push_back(t_stack **sta, t_stack **stb)
 		}
 		pa(stb, sta);
 	}
-}
+	end_a_sort(sta);
+/* 	while (sorted_sta(*sta) != true)
+	{
+		ra(sta);
+		if ((*sta)->next->val < (*sta)->val)
+			sa(sta);
+	} */
+	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: koma <koma@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mkollar <mkollar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:00:48 by mkollar           #+#    #+#             */
-/*   Updated: 2025/04/03 21:19:30 by koma             ###   ########.fr       */
+/*   Updated: 2025/04/10 18:04:26 by mkollar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	check_input(int argc, char **argv)
 		ft_putstr_fd("\033[31mERROR:\nPlease input something\n", 2);
 		exit(INPUT_ERROR);
 	}
-	else if (argv[1] == NULL)
+	else if (argv[1][0] == '\0')
 	{
 		ft_putstr_fd("\033[31mERROR:\nInput can not be a NULL character\n", 2);
 		exit(INPUT_ERROR);
